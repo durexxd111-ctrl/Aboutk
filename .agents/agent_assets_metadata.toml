@@ -1,0 +1,17 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "ux2FdN8sYbPqzUpn1Odh-"
+uri = "file://.local/conversation-workspace/files/Portfolioweb-main-mobile-fixed.zip"
+type = "unspecified"
+title = "Fixed portfolio project"
+description = "Updated portfolio source with a clean mobile hero layout and the scrapbook header label removed."
+logical_id = "240b0722-e2a2-4b7c-9929-7c2ee716b470"
+content_hash = "sha256:598d9eaf8de53f6a49c9665b4ae7f0a3bb537eb45bb6f1ffc4dca1ae0779b4b7"
+size = 4468570
+mtime_ms = 1790410232577
+storage_uri = "gcs://replit-rams-assets-sisko/rams/assets/conversation:a1c4dd04-45a9-4ebe-943f-e3a8cba77303/240b0722-e2a2-4b7c-9929-7c2ee716b470/5aa6a6a9-acf7-4716-babc-bba07dd9905e"
+storage_version_token = "1790410238089098"
+content_type = "application/octet-stream"
+source_uri = "file://Portfolioweb-main-mobile-fixed.zip"

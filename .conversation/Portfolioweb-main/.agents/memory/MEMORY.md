@@ -1,0 +1,1 @@
+- [WebGL ambient effects](webgl-ambient-effects.md) — Vanta/Three.js backgrounds need feature detection and a CSS fallback in Replit previews.

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "K Profile"
+description = "A polished personal profile website for K, a Discord-focused developer, using supplied anime artwork, ambient motion, project highlights, and a direct Discord profile link."
+version = "1.0.0"
+id = "artifacts/k-profile"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18304
+
+[services.development]
+run = "pnpm --filter @workspace/k-profile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/k-profile", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/k-profile/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18304"
+BASE_PATH = "/"
