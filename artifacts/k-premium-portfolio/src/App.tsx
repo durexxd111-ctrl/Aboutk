@@ -153,11 +153,11 @@ function DiscordProfileTile() {
 }
 
 const connectionLinks = [
-  { label: 'GitHub', href: 'https://github.com/ashiqhoon', icon: Github },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ashiqhoon/', icon: Linkedin },
-  { label: 'YouTube', href: 'https://www.youtube.com/@ashiqhoon', icon: Youtube },
-  { label: 'Instagram', href: 'https://www.instagram.com/ashiqhoon/', icon: Instagram },
-  { label: 'Pinterest', href: 'https://www.pinterest.com/ashiqhoon/', icon: Pin },
+  { label: 'GitHub', href: 'https://github.com/krishnaflx', icon: Github },
+  { label: 'LinkedIn', href: null, icon: Linkedin },
+  { label: 'YouTube', href: null, icon: Youtube },
+  { label: 'Instagram', href: null, icon: Instagram },
+  { label: 'Pinterest', href: null, icon: Pin },
 ];
 
 function ConnectionShelf() {
@@ -166,9 +166,15 @@ function ConnectionShelf() {
       <span className="font-mono-k text-[9px] uppercase tracking-[.17em] text-[hsl(var(--muted-foreground))]">connect / keep in touch</span>
       <div className="flex items-center gap-1">
         {connectionLinks.map(({ label, href, icon: Icon }) => (
-          <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={`K on ${label}`} data-testid={`link-${label.toLowerCase()}`} className="grid size-8 place-items-center rounded-full text-[hsl(var(--muted-foreground))] transition-colors hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary-foreground))]">
-            <Icon size={15} strokeWidth={1.7} />
-          </a>
+            href ? (
+              <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={`K on ${label}`} data-testid={`link-${label.toLowerCase()}`} className="grid size-8 place-items-center rounded-full text-[hsl(var(--muted-foreground))] transition-colors hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary-foreground))]">
+                <Icon size={15} strokeWidth={1.7} />
+              </a>
+            ) : (
+              <span key={label} aria-label={`${label} link coming soon`} aria-disabled="true" title="Link coming soon" className="grid size-8 cursor-not-allowed place-items-center rounded-full text-[hsl(var(--muted-foreground)/.35)]">
+                <Icon size={15} strokeWidth={1.7} />
+              </span>
+            )
         ))}
       </div>
     </div>
@@ -362,11 +368,18 @@ function Home() {
               <p className="mt-6 max-w-xl text-base leading-8 text-[hsl(var(--muted-foreground))]">A small shelf for the places where I post, build, collect, and disappear for a while. Tap any icon to open the profile in a new tab.</p>
               <div className="mt-9 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {connectionLinks.map(({ label, href, icon: Icon }) => (
-                  <a key={label} href={href} target="_blank" rel="noreferrer" className="hover-lift flex items-center gap-3 rounded-[1.1rem] border border-[hsl(var(--border))] bg-[hsl(var(--card)/.65)] px-4 py-4" data-testid={`card-connection-${label.toLowerCase()}`}>
-                    <span className="grid size-9 place-items-center rounded-full bg-[hsl(var(--muted))] text-[hsl(var(--secondary))]"><Icon size={17} /></span>
-                    <span className="font-mono-k text-[10px] uppercase tracking-[.12em]">{label}</span>
-                    <ArrowUpRight size={13} className="ml-auto text-[hsl(var(--muted-foreground))]" />
-                  </a>
+                  href ? (
+                    <a key={label} href={href} target="_blank" rel="noreferrer" className="hover-lift flex items-center gap-3 rounded-[1.1rem] border border-[hsl(var(--border))] bg-[hsl(var(--card)/.65)] px-4 py-4" data-testid={`card-connection-${label.toLowerCase()}`}>
+                      <span className="grid size-9 place-items-center rounded-full bg-[hsl(var(--muted))] text-[hsl(var(--secondary))]"><Icon size={17} /></span>
+                      <span className="font-mono-k text-[10px] uppercase tracking-[.12em]">{label}</span>
+                      <ArrowUpRight size={13} className="ml-auto text-[hsl(var(--muted-foreground))]" />
+                    </a>
+                  ) : (
+                    <div key={label} aria-disabled="true" className="flex cursor-not-allowed items-center gap-3 rounded-[1.1rem] border border-[hsl(var(--border)/.65)] bg-[hsl(var(--card)/.35)] px-4 py-4 opacity-50" data-testid={`card-connection-${label.toLowerCase()}`}>
+                      <span className="grid size-9 place-items-center rounded-full bg-[hsl(var(--muted))] text-[hsl(var(--secondary))]"><Icon size={17} /></span>
+                      <span className="min-w-0"><span className="block font-mono-k text-[10px] uppercase tracking-[.12em]">{label}</span><span className="mt-1 block font-mono-k text-[8px] uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))]">coming soon</span></span>
+                    </div>
+                  )
                 ))}
               </div>
             </div>
